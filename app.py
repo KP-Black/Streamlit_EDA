@@ -11,7 +11,7 @@ df = upload_csv()
 if df is not None:
     st.write("### 📄 Uploaded Data", df.head())
 
-    if df.shape[1] == 2:
+    if df.shape[1] >= 2:
         perform_eda(df)
     else:
-        st.warning("Please upload a dataset with exactly two columns.")
+        st.warning("Please upload a proper dataset.")
