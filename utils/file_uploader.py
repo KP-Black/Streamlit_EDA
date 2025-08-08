@@ -21,9 +21,11 @@ def upload_csv():
                 df = pd.read_excel(uploaded_file)
 
             st.success("Data successfully loaded!")
+            return df  # ✅ Return the DataFrame so the caller can use it
 
         except Exception as e:
             st.error(f"Error loading file: {e}")
             st.stop()
     else:
         st.info("Please upload a file to proceed.")
+        return None
