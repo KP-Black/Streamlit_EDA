@@ -4,7 +4,7 @@ from utils.eda import perform_eda
 
 st.set_page_config(page_title="Modular EDA App", layout="centered")
 
-st.title("📊 Modular EDA App (Two Columns Only)")
+st.title("📊 Exploratory Data Analysis (EDA) Tool")
 
 df = upload_csv()
 

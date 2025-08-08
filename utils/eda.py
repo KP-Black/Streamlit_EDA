@@ -3,17 +3,16 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-def perform_eda(df: pd.DataFrame):
-    st.write("### ℹ️ Data Info")
-    st.write(df.describe())
+def perform_eda(df):
+    st.write("### 📈 EDA Plots")
 
-    col1, col2 = df.columns
+    if df.select_dtypes(include=["number"]).shape[1] == 2:
+        fig, ax = plt.subplots()
+        sns.scatterplot(data=df, x=df.columns[0], y=df.columns[1], ax=ax)
+        st.pyplot(fig)
+    else:
+        st.warning("Both columns must be numeric for EDA plots.")
 
-    st.write(f"### 📈 Scatter Plot of `{col1}` vs `{col2}`")
-    fig, ax = plt.subplots()
-    sns.scatterplot(data=df, x=col1, y=col2, ax=ax)
-    st.pyplot(fig)
-
-    st.write(f"### 📉 Correlation")
-    corr = df.corr()
-    st.dataframe(corr)
+    
+    
+    
